@@ -16,6 +16,12 @@ io.on('connection', (socket) => {
 		console.log('new user connection');
 		socket.on('disconnect', () => {
 				console.log('user disconnect')
+		});
+
+		socket.emit('newEmail', {ren: 377});
+
+		socket.on('createEmail', function (e) {
+				console.log(e)
 		})
 })
 
