@@ -1,14 +1,17 @@
 var socket = io();
 socket.on('connect', function () {
-		console.log('connection')
+		console.log('connection to server')
 });
 
 socket.on('disconnect', function () {
 		console.log('disconnection')
 })
-socket.on('newEmail', function (e) {
-		console.log(e)
-		console.log('newEmail')
+
+socket.on('newMessage', function (message) {
+		console.log(message)
 });
 
-socket.emit('createEmail', {ren: 44})
+socket.emit('createMessage', {
+		from: 'Andrew',
+		text: 'hellow Andrew'
+})
