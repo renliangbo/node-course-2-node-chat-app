@@ -7,11 +7,11 @@ socket.on('disconnect', function () {
 		console.log('disconnection')
 })
 
-socket.on('newMessage', function (message) {
-		console.log(message)
-});
-
 socket.emit('createMessage', {
 		from: 'Andrew',
 		text: 'hellow Andrew'
-})
+});
+
+socket.on('newMessage', function (message) {
+		console.log(message)
+});
