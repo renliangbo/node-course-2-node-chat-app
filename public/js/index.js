@@ -11,9 +11,10 @@ socket.on('disconnect', function () {
 
 socket.on('newMessage', function (message) {
 		console.log(message);
-		var li = $("<li></li>");
-		li.text(`${message.from}: ${message.text}`);
-		$("#messages").append(li)
+		var template = $('#message-template').html();
+		console.log(template)
+		var html = Mustache.render(template, message);
+		$("#messages").append(html)
 });
 
 $("#message-form").on('submit', function (e) {
@@ -23,3 +24,18 @@ $("#message-form").on('submit', function (e) {
 				text: $("[name='message']").val()
 		}, function () {})
 })
+var locationButton = $("#send-location");
+locationButton.on('click', function () {
+		if (!navigator.geolocation) {
+				alert('Geolocation is not suported by your bowser')
+		};
+		navigator
+				.geolocation
+				.getCurrentPosition(function (position) {
+						console.log(position)
+				}, function (err) {
+						console.log(err)
+						alert('Unable to fetch loaction')
+				});
+		console.log(navigator.geolocation)
+});
