@@ -36,5 +36,17 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.js"></script>
 <script src="/js/index.js"></script>
+<script>
 
+	function Person(){
+		console.log(this)
+	};
+	Person();
+	Person.prototype.greeting=function(){
+
+	}
+	var person=new Person();
+	person.greeting();
+	
+</script>
 </html>
